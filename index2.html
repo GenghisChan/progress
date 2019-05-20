@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+    <style>
+      .bar {
+        width: 300px;
+        height: 100px;
+        background-color: lightblue;
+      }
+      .progress {
+        width: 0%;
+        height: 100px;
+        background-color: lightpink;
+        transition: width 0.7s;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const bar = document.querySelector(".bar");
+        const progress = document.querySelector(".progress");
+
+        progress.style.width = percent("valueThree");
+      });
+
+      const percent = search => {
+        const first = parseInt(getInfo("valueOne"));
+        const second = parseInt(getInfo("valueTwo"));
+        const third = parseInt(getInfo("valueThree"));
+
+        const numerator = parseInt(getInfo(search));
+        const denominator = first + second + third;
+
+        const percentage = (numerator / denominator) * 100;
+
+        return percentage + "%";
+      };
+
+      const getInfo = search => {
+        const query = window.location.search.slice(1);
+        const splittedQuery = query.split("&");
+
+        const stringQuery = splittedQuery.reduce((key, value) => {
+          const split = value.split("=");
+          key[split[0]] = split[1];
+          return key;
+        }, {});
+
+        return stringQuery[search];
+      };
+    </script>
+  </body>
+</html>

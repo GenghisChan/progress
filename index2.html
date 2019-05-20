@@ -7,20 +7,35 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="bar">
-      <div class="progress"></div>
+    <div class="container">
+      <h1>Progress bar</h1>
+      <div class="bar">
+        <div class="progress"></div>
+      </div>
     </div>
     <style>
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      h1 {
+        text-align: center;
+      }
       .bar {
         width: 300px;
-        height: 100px;
+        height: 20px;
         background-color: lightblue;
+        border-radius: 200px;
       }
       .progress {
         width: 0%;
-        height: 100px;
+        height: 20px;
         background-color: lightpink;
         transition: width 0.7s;
+        border-radius: 200px;
       }
     </style>
     <script>
